@@ -20,6 +20,6 @@ jobs:
       - name: Create a Tag
         uses: actions/github-script@v6
         with:
-          run: script
+          script:
             console.log(context)
         
