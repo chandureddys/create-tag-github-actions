@@ -21,6 +21,24 @@ jobs:
         uses: actions/github-script@v6
         with:
           script:
-            console.log(context);
-            console.log(context.payload.repository.owner);
+            console.log(context)
+            console.log(context.payload.repository.owner)
+            const tagResponse = await github.request('POST /repos/{owner}/{repo}/git/tags', {
+              owner: context.payload.repository.owner.name,
+              repo: context.payload.repository.url,
+              tag: 'v0.0.1',
+              message: 'initial version',
+              object: context.payload.sha,
+              type: 'commit',
+            })
+            console.log("response")
+            console.log(tagResponse)
+            const refResponse = octokit.request('GET /repos/{owner}/{repo}/git/ref/{ref}', {
+              owner: context.payload.repository.owner.name,
+              repo: context.payload.repository.url,
+              ref: response.data.sha
+            })
+
+            console.log(refResponse)
+
            
