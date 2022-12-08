@@ -20,7 +20,7 @@ jobs:
       - name: Create a Tag
         uses: actions/github-script@v6
         with:
-          script:
+          script: |
             console.log(context)
             console.log(context.payload.repository.owner)
             const tagResponse = await github.request('POST /repos/{owner}/{repo}/git/tags', {
