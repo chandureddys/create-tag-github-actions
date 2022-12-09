@@ -36,7 +36,7 @@ jobs:
             const refResponse = await github.request('POST /repos/{owner}/{repo}/git/refs', {
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
-              ref: 'ref/tags/v1',
+              ref: 'refs/tags/v1',
               sha: tagResponse.data.sha
             })
 
