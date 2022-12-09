@@ -33,7 +33,7 @@ jobs:
             })
             console.log("response")
             console.log(tagResponse)
-            const refResponse = octokit.request('GET /repos/{owner}/{repo}/git/refs', {
+            const refResponse = await github.request('GET /repos/{owner}/{repo}/git/refs', {
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
               ref: 'ref/tags/v0.0.1',
