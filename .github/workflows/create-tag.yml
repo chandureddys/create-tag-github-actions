@@ -24,19 +24,20 @@ jobs:
             console.log(context)
             console.log(context.payload.repository.owner)
             const tagResponse = await github.request('POST /repos/{owner}/{repo}/git/tags', {
-              owner: context.payload.repository.owner.name,
-              repo: context.payload.repository.url,
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
               tag: 'v0.0.1',
               message: 'initial version',
-              object: context.payload.sha,
+              object: context.sha,
               type: 'commit',
             })
             console.log("response")
             console.log(tagResponse)
-            const refResponse = octokit.request('GET /repos/{owner}/{repo}/git/ref/{ref}', {
-              owner: context.payload.repository.owner.name,
-              repo: context.payload.repository.url,
-              ref: response.data.sha
+            const refResponse = octokit.request('GET /repos/{owner}/{repo}/git/refs', {
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              ref: 'ref/tags/v0.0.1',
+              sha: tagResponse.data.sha
             })
 
             console.log(refResponse)
