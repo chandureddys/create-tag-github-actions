@@ -1,14 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
 name: Create a tag
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: main
-    
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   createTagAndRef:
     name: create a Tag
@@ -16,12 +11,23 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-        
       - name: Use github actions
         uses: ./.github/actions
         with:
-          environment: ":red: soo:dev"
-          test: ":red: soo:dev"
+          environment: ':red: soo:dev'
+          test: ':red: soo:dev'
+  createTest:
+    name: create a  test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Use github actions
+        uses: ./.github/actions
+        with:
+          environment: ':red: soo:dev'
+          test: ':red: soo:dev'
+
 #       - name: Create a Tag
 #         uses: actions/github-script@v6
 #         with:
