@@ -17,7 +17,7 @@ runs:
       shell: bash
       run: |
         echo ":redsiren: soo:print context inside action"
-        echo "${{ github.job}}"
+        echo "${{ github.job.id}}"
         echo "${{ github.repository }}"
         echo "${{ github.server_url }}"
         echo "${{ github.run_id }}"
