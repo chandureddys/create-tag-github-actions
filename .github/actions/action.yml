@@ -11,4 +11,4 @@ runs:
   using: "composite"
   steps:
     -
-      run: echo "${{ github }}"
+      run: echo "github"
