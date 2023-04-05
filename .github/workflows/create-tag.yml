@@ -20,7 +20,8 @@ jobs:
       - name: Use github actions
         uses: ./.github/actions
         with:
-          environment: "dev"
+          environment: ":red: soo:dev"
+          test: ":red: soo:dev"
 #       - name: Create a Tag
 #         uses: actions/github-script@v6
 #         with:
