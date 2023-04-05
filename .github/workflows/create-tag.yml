@@ -17,6 +17,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         
+      - name: Use github actions
+        uses: ./.github/actions
+        with:
+          environment: "dev"
       - name: Create a Tag
         uses: actions/github-script@v6
         with:
