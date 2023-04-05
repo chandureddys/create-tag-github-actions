@@ -6,7 +6,10 @@ inputs:
     description: 'Environment Name'
     required: true
     default: dev
-
+  test:
+    description: 'Test it'
+    required: true
+    
 runs:
   using: "composite"
   steps:
@@ -17,3 +20,4 @@ runs:
         echo "${{ github.repository }}"
         echo "${{ github.server_url }}"
         echo "${{ github.run_id }}"
+        echo "${{ inputs.test }}"
