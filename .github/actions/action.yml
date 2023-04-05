@@ -1,1 +1,14 @@
+name: test-json
+decription: Action to generate a custom task definition json file
 
+inputs:
+  environment:
+    description: 'Environment Name'
+    required: true
+    default: dev
+
+runs:
+  using: "composite"
+  steps:
+    -
+      run: echo "${{ github }}"
