@@ -12,4 +12,6 @@ runs:
   steps:
     - name: print echo
       shell: bash
-      run: echo "${{ github.repository }}"
+      run: |
+        echo "print context inside action"
+        echo "${{ github.repository }}"
