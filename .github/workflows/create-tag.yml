@@ -21,29 +21,29 @@ jobs:
         uses: ./.github/actions
         with:
           environment: "dev"
-      - name: Create a Tag
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log(context)
-            console.log(context.payload.repository.owner)
-            const tagResponse = await github.request('POST /repos/{owner}/{repo}/git/tags', {
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              tag: 'v1',
-              message: 'initial version',
-              object: context.sha,
-              type: 'commit',
-            })
-            console.log("response")
-            console.log(tagResponse)
-            const refResponse = await github.request('POST /repos/{owner}/{repo}/git/refs', {
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              ref: 'refs/tags/v1',
-              sha: tagResponse.data.sha
-            })
+#       - name: Create a Tag
+#         uses: actions/github-script@v6
+#         with:
+#           script: |
+#             console.log(context)
+#             console.log(context.payload.repository.owner)
+#             const tagResponse = await github.request('POST /repos/{owner}/{repo}/git/tags', {
+#               owner: context.payload.repository.owner.login,
+#               repo: context.payload.repository.name,
+#               tag: 'v1',
+#               message: 'initial version',
+#               object: context.sha,
+#               type: 'commit',
+#             })
+#             console.log("response")
+#             console.log(tagResponse)
+#             const refResponse = await github.request('POST /repos/{owner}/{repo}/git/refs', {
+#               owner: context.payload.repository.owner.login,
+#               repo: context.payload.repository.name,
+#               ref: 'refs/tags/v1',
+#               sha: tagResponse.data.sha
+#             })
 
-            console.log(refResponse)
+#             console.log(refResponse)
 
            
