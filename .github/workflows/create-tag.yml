@@ -31,10 +31,11 @@ jobs:
     name: Fail test
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
       - name: test
-        run: exit 1
+        uses: actions/github-script@v3
+        with:
+          script: |
+              core.setFailed('envA and envB are not equivalent!')
     
  
 
