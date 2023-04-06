@@ -6,7 +6,7 @@ on:
     branches: main
 jobs:
   createTagAndRef:
-    name: create a Tag
+    name: create-a-first-Tag
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -17,8 +17,9 @@ jobs:
           environment: ':red: soo:dev'
           test: ':red: soo:dev'
   createTest:
-    name: create a  test
+    name: create-a-first-test
     runs-on: ubuntu-latest
+    needs: createTagAndRef
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -27,8 +28,14 @@ jobs:
         with:
           environment: ':red: soo:dev'
           test: ':red: soo:dev'
+      - name: hello
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('envA are not equivalent!')
+    
   testFail:
-    name: Fail test
+    name: Fail-a-test
     runs-on: ubuntu-latest
     steps:
       - name: test
