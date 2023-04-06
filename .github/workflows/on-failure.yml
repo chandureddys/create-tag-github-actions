@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conlusions == 'FAILURE' }}
     steps:
-      - name: Send message
       - name: checkout
         uses: actions/checkout@v3
+      - name: print url
         shell: bash
         run: |
           echo "${{ github.server_url }}"
