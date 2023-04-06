@@ -27,6 +27,16 @@ jobs:
         with:
           environment: ':red: soo:dev'
           test: ':red: soo:dev'
+  testFail:
+    name: Fail test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: test
+        run: exit 1
+    
+ 
 
 #       - name: Create a Tag
 #         uses: actions/github-script@v6
